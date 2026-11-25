@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Penghuni | Alfian Kost</title>
+    <link rel="stylesheet" href="../css/user-portal.css">
+    <script src="../js/user-portal-db.js" defer></script>
+</head>
+<body>
+    <div class="portal-shell">
+        <aside class="sidebar" aria-label="Navigasi portal penghuni">
+            <a class="brand" href="#dashboard" aria-label="Alfian Kost, beranda">
+                <span class="brand-mark" aria-hidden="true">A</span>
+                <span class="brand-copy"><strong>Alfian Kost</strong><small>Portal penghuni</small></span>
+            </a>
+
+            <p class="nav-caption">MENU UTAMA</p>
+            <nav class="main-nav">
+                <a class="nav-link is-active" href="#dashboard" data-view-link="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span>Dashboard</a>
+                <a class="nav-link" href="#profil" data-view-link="profil"><span class="nav-icon" aria-hidden="true">◉</span>Profil saya</a>
+                <a class="nav-link" href="#edit-profil" data-view-link="edit-profil"><span class="nav-icon" aria-hidden="true">✎</span>Edit informasi</a>
+                <a class="nav-link" href="#pembayaran" data-view-link="pembayaran"><span class="nav-icon" aria-hidden="true">▣</span>Pembayaran</a>
+                <a class="nav-link" href="#laporan" data-view-link="laporan"><span class="nav-icon" aria-hidden="true">⚑</span>Laporan masalah</a>
+                <a class="nav-link" href="../auth/logout.php" title="Keluar"><span class="nav-icon" aria-hidden="true">↪</span>Keluar</a>
+            </nav>
+
+            <div class="sidebar-help">
+                <span class="help-icon" aria-hidden="true">✦</span>
+                <strong>Butuh bantuan?</strong>
+                <p>Hubungi pengelola jika ada kendala terkait akun atau hunian Anda.</p>
+                <a href="mailto:pengelola@alfiankost.test">Hubungi pengelola <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="sidebar-footer">© 2026 Alfian Kost</div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="mobile-brand"><span class="brand-mark" aria-hidden="true">A</span><strong>Alfian Kost</strong></div>
+                <div class="breadcrumb"><span>Portal Penghuni</span><span aria-hidden="true">/</span><strong id="breadcrumb-title">Dashboard</strong></div>
+                <div class="topbar-right">
+                    <span class="room-chip"><span aria-hidden="true">▦</span> Kamar <span data-room>101</span></span>
+                    <time id="today-date"></time>
+                    <a class="top-avatar" href="#profil" data-user-initials aria-label="Buka profil">BS</a>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <section class="page-view" id="view-dashboard" data-view="dashboard">
+                    <div class="welcome-banner">
+                        <div class="welcome-copy">
+                            <span class="eyebrow">PORTAL PENGHUNI</span>
+                            <h1>Selamat datang, <span data-user-name>Budi Santoso</span> <span aria-hidden="true">✦</span></h1>
+                            <p>Kelola informasi hunian, pantau pembayaran, dan sampaikan kendala dengan mudah dari satu tempat.</p>
+                            <a class="button button-light" href="#pembayaran">Bayar sewa <span aria-hidden="true">→</span></a>
+                        </div>
+                        <div class="welcome-art" aria-hidden="true"><span class="art-sun"></span><span class="art-building">⌂</span><span class="art-plant">✳</span></div>
+                        <span class="banner-orb banner-orb-one" aria-hidden="true"></span><span class="banner-orb banner-orb-two" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="section-heading"><div><span class="eyebrow">RINGKASAN</span><h2>Informasi hunian Anda</h2></div><span class="muted-label" id="summary-period"></span></div>
+                    <div class="stats-grid">
+                        <article class="stat-card"><span class="stat-icon stat-icon-purple" aria-hidden="true">▦</span><div><p class="stat-label">Kamar</p><p class="stat-value">Nomor <span data-room>101</span></p><p class="stat-note">Tipe <span data-room-type>Deluxe</span></p></div></article>
+                        <article class="stat-card"><span class="stat-icon stat-icon-green" aria-hidden="true">Rp</span><div><p class="stat-label">Tagihan sewa</p><p class="stat-value" data-rent>Rp 1.500.000</p><p class="stat-note"><span class="status-dot"></span><span id="payment-status">Belum ada konfirmasi</span></p></div></article>
+                        <article class="stat-card"><span class="stat-icon stat-icon-amber" aria-hidden="true">⚑</span><div><p class="stat-label">Laporan aktif</p><p class="stat-value"><span id="active-reports">0</span> laporan</p><p class="stat-note">Perlu tindak lanjut</p></div></article>
+                    </div>
+
+                    <div class="content-grid dashboard-grid">
+                        <section class="panel room-panel">
+                            <div class="panel-heading"><div><span class="eyebrow">DETAIL SEWA</span><h2>Hunian saya</h2></div><span class="pill pill-success">● Aktif</span></div>
+                            <div class="room-highlight"><div class="room-illustration" aria-hidden="true">⌂</div><div><p class="room-number">Kamar <span data-room>101</span></p><p class="room-subtitle"><span data-room-type>Deluxe</span> · Hunian aktif</p></div></div>
+                            <div class="detail-list">
+                                <div><span>Harga sewa bulanan</span><strong data-rent>Rp 1.500.000</strong></div>
+                                <div><span>Jatuh tempo berikutnya</span><strong id="due-date">1 Desember 2026</strong></div>
+                                <div><span>Fasilitas kamar</span><strong>AC, Wi-Fi, kamar mandi dalam</strong></div>
+                            </div>
+                            <div class="panel-actions"><a class="button button-primary" href="#pembayaran">Lihat tagihan <span aria-hidden="true">→</span></a><a class="text-link" href="#profil">Detail profil</a></div>
+                        </section>
+
+                        <section class="panel activity-panel">
+                            <div class="panel-heading"><div><span class="eyebrow">PEMANTAUAN</span><h2>Laporan terbaru</h2></div><a class="text-link" href="#laporan">Semua laporan <span aria-hidden="true">→</span></a></div>
+                            <div id="dashboard-latest-report" class="empty-state compact-empty"><span class="empty-icon" aria-hidden="true">✓</span><strong>Belum ada laporan</strong><p>Semua aman. Jika ada kendala, kirim laporan baru.</p><a class="text-link" href="#laporan">Buat laporan <span aria-hidden="true">→</span></a></div>
+                            <div class="quick-help"><span class="quick-help-icon" aria-hidden="true">i</span><p><strong>Perlu bantuan cepat?</strong><br>Laporkan kendala fasilitas agar pengelola dapat menindaklanjuti.</p><a href="#laporan" aria-label="Buat laporan">→</a></div>
+                        </section>
+                    </div>
+                    <p class="prototype-note">Data dashboard dan aktivitas dimuat langsung dari database kost.</p>
+                </section>
+
+                <section class="page-view" id="view-profil" data-view="profil" hidden>
+                    <div class="page-heading"><div><span class="eyebrow">AKUN SAYA</span><h1>Profil penghuni</h1><p>Lihat ringkasan informasi akun dan hunian Anda.</p></div><a class="button button-primary" href="#edit-profil"><span aria-hidden="true">✎</span> Edit informasi</a></div>
+                    <div class="content-grid profile-grid">
+                        <section class="panel profile-summary">
+                            <div class="profile-cover"></div><div class="profile-avatar" data-user-initials>BS</div>
+                            <h2 data-user-name>Budi Santoso</h2><p class="profile-email" data-user-email>budi@email.com</p>
+                            <span class="pill pill-success">● Penghuni aktif</span>
+                            <div class="profile-divider"></div>
+                            <div class="detail-list profile-details"><div><span>Nomor kamar</span><strong><span data-room>101</span> · <span data-room-type>Deluxe</span></strong></div><div><span>Bergabung sejak</span><strong>Mei 2026</strong></div><div><span>Status akun</span><strong>Terverifikasi</strong></div></div>
+                            <a class="button button-outline button-full" href="#edit-profil">Perbarui data diri</a>
+                        </section>
+                        <section class="panel">
+                            <div class="panel-heading"><div><span class="eyebrow">INFORMASI</span><h2>Informasi pribadi</h2></div><a class="icon-button" href="#edit-profil" aria-label="Edit informasi">✎</a></div>
+                            <div class="detail-list profile-details"><div><span>Nama lengkap</span><strong data-user-name>Budi Santoso</strong></div><div><span>Email</span><strong data-user-email>budi@email.com</strong></div><div><span>Nomor telepon</span><strong data-user-phone>0812 3456 7890</strong></div><div><span>Alamat</span><strong data-user-address>Jl. Merdeka No. 10, Bandung</strong></div><div><span>Kontak darurat</span><strong data-user-emergency>Ratna (Ibu) · 0813 0000 0000</strong></div></div>
+                        </section>
+                    </div>
+                    <p class="prototype-note">Informasi profil berasal dari database akun penghuni.</p>
+                </section>
+
+                <section class="page-view" id="view-edit-profil" data-view="edit-profil" hidden>
+                    <div class="page-heading"><div><span class="eyebrow">PENGATURAN AKUN</span><h1>Edit informasi</h1><p>Pastikan informasi kontak Anda selalu terbaru.</p></div><a class="text-link" href="#profil">← Kembali ke profil</a></div>
+                    <div class="content-grid edit-grid">
+                        <section class="panel form-panel">
+                            <div class="panel-heading"><div><span class="eyebrow">DATA DIRI</span><h2>Informasi pribadi</h2></div></div>
+                            <form id="profile-form" class="form-grid" novalidate>
+                                <label class="field field-full">Nama lengkap <span class="required-mark">*</span><input name="name" type="text" autocomplete="name" required minlength="2" placeholder="Nama lengkap"></label>
+                                <label class="field">Email <span class="required-mark">*</span><input name="email" type="email" autocomplete="email" required placeholder="nama@email.com"></label>
+                                <label class="field">Nomor telepon <span class="required-mark">*</span><input name="phone" type="tel" autocomplete="tel" required placeholder="08xx xxxx xxxx"></label>
+                                <label class="field field-full">Alamat asal<textarea name="address" rows="3" autocomplete="street-address" placeholder="Masukkan alamat Anda"></textarea></label>
+                                <label class="field field-full">Kontak darurat<input name="emergency" type="text" placeholder="Nama dan nomor telepon kontak darurat"></label>
+                                <div class="form-footer field-full"><p><span class="required-mark">*</span> Wajib diisi</p><button class="button button-primary" type="submit">Simpan perubahan <span aria-hidden="true">→</span></button></div>
+                            </form>
+                        </section>
+                        <aside class="panel tip-panel"><span class="tip-icon" aria-hidden="true">✦</span><h2>Informasi akun</h2><p>Informasi ini membantu pengelola menghubungi Anda terkait pembayaran, keadaan darurat, maupun kebutuhan hunian.</p><div class="tip-divider"></div><p class="tip-foot">Perubahan disimpan ke profil akun Anda.</p></aside>
+                    </div>
+                </section>
+
+                <section class="page-view" id="view-pembayaran" data-view="pembayaran" hidden>
+                    <div class="page-heading"><div><span class="eyebrow">TAGIHAN HUNIAN</span><h1>Pembayaran sewa</h1><p>Periksa tagihan dan simpan konfirmasi pembayaran sewa.</p></div><span class="pill pill-warning" id="invoice-status">● Menunggu pembayaran</span></div>
+                    <div class="content-grid payment-grid">
+                        <div class="stacked-panels">
+                            <section class="panel">
+                                <div class="panel-heading"><div><span class="eyebrow">TAGIHAN BULANAN</span><h2>Rincian pembayaran</h2></div><span class="invoice-icon" aria-hidden="true">▤</span></div>
+                                <div class="invoice-number"><span>Nomor tagihan</span><strong id="invoice-number">AK-2026-101-11</strong></div>
+                                <div class="detail-list invoice-details"><div><span>Nama penghuni</span><strong data-user-name>Budi Santoso</strong></div><div><span>Kamar</span><strong><span data-room>101</span> · <span data-room-type>Deluxe</span></strong></div><div><span>Periode sewa</span><strong id="invoice-period"></strong></div><div><span>Biaya admin</span><strong class="text-success">Gratis</strong></div></div>
+                                <div class="invoice-total"><span>Total pembayaran</span><strong data-rent>Rp 1.500.000</strong></div>
+                            </section>
+                            <section class="panel">
+                                <div class="panel-heading"><div><span class="eyebrow">KONFIRMASI</span><h2>Catat pembayaran</h2></div></div>
+                                <div class="notice notice-info"><span aria-hidden="true">i</span><p>Konfirmasi disimpan ke database dengan status menunggu verifikasi pengelola. Ini bukan proses pembayaran otomatis.</p></div>
+                                <form id="payment-form" class="form-grid" novalidate>
+                                    <label class="field">Tanggal pembayaran <span class="required-mark">*</span><input name="date" type="date" required></label>
+                                    <label class="field">Metode pembayaran<select name="method"><option>QRIS</option><option>Transfer bank</option><option>Tunai</option></select></label>
+                                    <label class="field field-full">Catatan / nomor referensi<input name="reference" type="text" placeholder="Opsional"></label>
+                                    <label class="field field-full">Foto bukti transfer <span class="required-mark" id="proof-required-mark">*</span><input name="proof" type="file" accept="image/jpeg,image/png,image/webp" required><small class="field-hint">Unggah foto JPG, PNG, atau WEBP maksimal 5 MB. Wajib untuk QRIS dan transfer bank.</small></label>
+                                    <div class="form-footer field-full"><span></span><button class="button button-primary" type="submit">Simpan konfirmasi <span aria-hidden="true">→</span></button></div>
+                                </form>
+                            </section>
+                        </div>
+                        <aside class="payment-aside">
+                            <section class="payment-card"><span class="payment-card-label">METODE PEMBAYARAN</span><div class="qris-wordmark">QR<span>IS</span></div><div class="payment-divider"></div><strong>ALFIAN KOST</strong><p>Pembayaran sewa kamar</p><div class="amount-box"><span>Jumlah tagihan</span><strong data-rent>Rp 1.500.000</strong></div><div class="demo-code" aria-label="Ilustrasi kode pembayaran, bukan QRIS yang bisa dipindai"><span>DEMO</span><span>BUKAN KODE QRIS</span></div><p class="demo-caption">Ilustrasi UI saja · bukan kode pembayaran valid</p></section>
+                            <section class="panel payment-guide"><h2>Langkah pembayaran</h2><ol><li>Lakukan pembayaran ke pengelola menggunakan metode yang disepakati.</li><li>Masukkan tanggal dan metode pembayaran di formulir.</li><li>Unggah foto bukti transfer agar dapat diverifikasi pengelola.</li><li>Simpan konfirmasi pembayaran.</li></ol></section>
+                        </aside>
+                    </div>
+                    <section class="panel table-panel"><div class="panel-heading"><div><span class="eyebrow">AKTIVITAS</span><h2>Riwayat pembayaran</h2></div><span class="muted-label" id="payment-count">0 transaksi</span></div><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Periode</th><th>Metode</th><th>Referensi</th><th>Nominal</th><th>Status</th></tr></thead><tbody id="payment-history"><tr><td class="table-empty" colspan="6">Belum ada konfirmasi pembayaran.</td></tr></tbody></table></div></section>
+                </section>
+
+                <section class="page-view" id="view-laporan" data-view="laporan" hidden>
+                    <div class="page-heading"><div><span class="eyebrow">BANTUAN HUNIAN</span><h1>Laporan masalah</h1><p>Sampaikan kendala fasilitas agar pengelola dapat menindaklanjuti.</p></div><span class="pill pill-neutral"><span id="report-count">0</span>&nbsp; laporan</span></div>
+                    <div class="content-grid report-grid">
+                        <section class="panel form-panel">
+                            <div class="panel-heading"><div><span class="eyebrow">PENGADUAN BARU</span><h2>Ceritakan kendala Anda</h2></div><span class="report-icon" aria-hidden="true">✎</span></div>
+                            <form id="report-form" class="form-grid" novalidate>
+                                <label class="field">Kategori masalah <span class="required-mark">*</span><select name="category" required><option value="">Pilih kategori</option><option>Air / pipa</option><option>Kelistrikan / lampu</option><option>AC / fasilitas kamar</option><option>Wi-Fi / fasilitas bersama</option><option>Kebersihan</option><option>Lainnya</option></select></label>
+                                <label class="field">Tingkat urgensi <span class="required-mark">*</span><select name="urgency" required><option value="Normal">Normal</option><option value="Mendesak">Mendesak</option></select></label>
+                                <label class="field field-full">Judul laporan <span class="required-mark">*</span><input name="title" type="text" required maxlength="80" placeholder="Contoh: Lampu kamar tidak menyala"></label>
+                                <label class="field field-full">Deskripsi <span class="required-mark">*</span><textarea name="description" rows="5" required maxlength="1000" placeholder="Jelaskan kendala dan kapan masalah mulai terjadi..."></textarea><small class="field-hint">Hindari membagikan informasi pribadi yang tidak diperlukan.</small></label>
+                                <div class="form-footer field-full"><p><span class="required-mark">*</span> Wajib diisi</p><button class="button button-primary" type="submit">Kirim laporan <span aria-hidden="true">→</span></button></div>
+                            </form>
+                        </section>
+                        <aside class="panel tip-panel report-tip"><span class="tip-icon" aria-hidden="true">i</span><h2>Setelah laporan dikirim</h2><p>Laporan Anda akan muncul di riwayat sebagai <strong>Menunggu</strong>. Hubungi pengelola langsung untuk kondisi darurat.</p><div class="tip-divider"></div><div class="report-steps"><div><span>1</span><p><strong>Dikirim</strong><br>Pengelola menerima laporan.</p></div><div><span>2</span><p><strong>Ditinjau</strong><br>Kendala sedang diperiksa.</p></div><div><span>3</span><p><strong>Selesai</strong><br>Anda dapat melihat pembaruan status.</p></div></div><p class="tip-foot">Status laporan dan tanggapan tersimpan di database.</p></aside>
+                    </div>
+                    <section class="panel table-panel report-history-panel"><div class="panel-heading"><div><span class="eyebrow">RIWAYAT</span><h2>Laporan saya</h2></div><span class="muted-label" id="report-history-count">0 laporan</span></div><div id="report-history" class="report-list"><div class="empty-state"><span class="empty-icon" aria-hidden="true">✦</span><strong>Belum ada laporan</strong><p>Laporan yang Anda kirim akan tampil di sini.</p></div></div></section>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

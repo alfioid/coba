@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfian Kost - Promosi Publik</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/public-portal.css">
+    <link rel="stylesheet" href="css/public-portal-theme.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="promo-navbar">
+        <div class="promo-container nav-container">
+                <a href="#home" class="promo-brand" aria-label="Alfian Kost, beranda">
+                <span class="brand-icon">⌂</span>
+                <span>Alfian Kost</span>
+            </a>
+            <div class="public-nav-actions">
+                <a href="#register" class="public-nav-register">Buat akun</a>
+                <a href="#login-admin" class="public-nav-admin">Login admin</a>
+                <a href="#login-user" class="btn-login">Masuk</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="home-view" data-public-view="home">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="promo-container hero-grid">
+                <div class="hero-content">
+                    <span class="eyebrow">SELAMAT DATANG DI ALFIAN KOST</span>
+                    <h1 class="hero-title">Ruang pribadi,<br>untuk hari yang<br><span class="highlight-text">lebih nyaman.</span></h1>
+                    <p class="hero-description">
+                        Pilihan kamar dengan fasilitas harian yang kamu butuhkan. Kenali kamarnya, lalu rencanakan kunjunganmu.
+                    </p>
+                    <div class="public-hero-actions">
+                        <a href="#pilihan-kamar" class="btn-primary">
+                            Lihat Pilihan Kamar <span class="btn-icon">↗</span>
+                        </a>
+                        <a href="#register" class="public-hero-register">
+                            Daftar Penghuni Baru ➔
+                        </a>
+                    </div>
+                    <p class="hero-note"><span aria-hidden="true">●</span> <span id="hero-available-count">Memuat ketersediaan kamar…</span> · Pembaruan November 2026</p>
+                </div>
+
+                <!-- Media Preview Grid -->
+                <div class="hero-media-grid">
+                    <div class="media-box media-main">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon" aria-hidden="true">▧</span>
+                            <span>Foto belum ditambahkan</span>
+                        </div>
+                    </div>
+                    <div class="media-box media-sub">
+                        <span class="media-label">TAMPAK DEPAN</span>
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon" aria-hidden="true">▧</span>
+                            <span>Foto belum ditambahkan</span>
+                        </div>
+                    </div>
+                    <div class="media-box media-sub">
+                        <span class="media-label">DAPUR BERSAMA</span>
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon" aria-hidden="true">▧</span>
+                            <span>Foto belum ditambahkan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats Section -->
+        <section class="stats-section">
+            <div class="promo-container">
+                <div class="stats-card">
+                    <div class="stats-intro">
+                        <h3>Kenali tempat tinggal berikutnya.</h3>
+                        <p>Periksa pilihan kamar yang tersedia, harga sewa, dan fasilitas sebelum menghubungi pengelola.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num" id="public-room-total">Memuat…</span>
+                            <span class="stat-desc">Total kamar</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" id="public-room-size">-</span>
+                            <span class="stat-desc">Ukuran kamar</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" id="public-room-price">-</span>
+                            <span class="stat-desc">Harga mulai / bulan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section class="facilities-section">
+            <div class="promo-container">
+                <div class="section-header">
+                    <div>
+                        <span class="eyebrow">FASILITAS KOST</span>
+                        <h2>Kebutuhan harian, sudah dipikirkan.</h2>
+                    </div>
+                    <p class="header-note">Dari ruang istirahat pribadi sampai area yang digunakan bersama.</p>
+                </div>
+
+                <div class="facilities-grid">
+                    <div class="facility-card">
+                        <span class="facility-group-title">DI DALAM KAMAR</span>
+                        <div class="facility-items">
+                            <div class="facility-item">
+                                <span class="facility-icon">🛏️</span>
+                                <div>
+                                    <strong>AC</strong>
+                                    <p>Pendingin ruangan</p>
+                                </div>
+                            </div>
+                            <div class="facility-item">
+                                <span class="facility-icon">📶</span>
+                                <div>
+                                    <strong>Wi-Fi</strong>
+                                    <p>Koneksi untuk keseharian</p>
+                                </div>
+                            </div>
+                            <div class="facility-item">
+                                <span class="facility-icon">🚿</span>
+                                <div>
+                                    <strong>Kamar mandi dalam</strong>
+                                    <p>Di dalam kamar pribadi</p>
+                                </div>
+                            </div>
+                            <div class="facility-item">
+                                <span class="facility-icon">🪑</span>
+                                <div>
+                                    <strong>Kasur & lemari</strong>
+                                    <p>Perabot dasar kamar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="facility-card accent-card">
+                        <span class="facility-group-title">AREA BERSAMA</span>
+                        <div class="facility-items">
+                            <div class="facility-item">
+                                <span class="facility-icon">🍳</span>
+                                <div>
+                                    <strong>Dapur bersama</strong>
+                                    <p>Area memasak bersama penghuni</p>
+                                </div>
+                            </div>
+                            <div class="facility-item">
+                                <span class="facility-icon">📶</span>
+                                <div>
+                                    <strong>Wi-Fi</strong>
+                                    <p>Seluruh area</p>
+                                </div>
+                            </div>
+                            <div class="facility-item">
+                                <span class="facility-icon">🛵</span>
+                                <div>
+                                    <strong>Parkir motor</strong>
+                                    <p>Kapasitas 8 motor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Room Options Section (Dynamic) -->
+        <section class="rooms-section" id="pilihan-kamar">
+            <div class="promo-container">
+                <div class="section-header">
+                    <div>
+                        <span class="eyebrow">PILIHAN KAMAR</span>
+                        <h2>Temukan ruang yang pas untukmu.</h2>
+                        <p class="header-subtitle" id="rooms-available-count" aria-live="polite">Memuat data ketersediaan kamar…</p>
+                    </div>
+                    <span class="update-date">Per November 2026</span>
+                </div>
+
+                <!-- Room Cards Container -->
+                <div class="room-cards-grid" id="public-room-grid" aria-live="polite">
+                    <!-- Rendered by JavaScript -->
+                </div>
+
+                <div class="rooms-footer-info">
+                    <p><strong>Informasi ketersediaan:</strong> Data kamar ditampilkan sesuai pembaruan dari pengelola.</p>
+                    <p class="disclaimer">Harga mengikuti data kamar. Konfirmasikan ketersediaan terbaru, biaya tambahan, dan ketentuan sewa kepada pengelola.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Action Section -->
+        <section class="contact-section">
+            <div class="promo-container">
+                <div class="contact-card">
+                    <div class="contact-copy">
+                        <span class="eyebrow-light">LANGKAH BERIKUTNYA</span>
+                        <h2>Tertarik dengan Alfian Kost?</h2>
+                        <p>Tanyakan kamar pilihanmu dan diskusikan jadwal survei langsung dengan pengelola.</p>
+                    </div>
+                    <div class="contact-info-list">
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>ALAMAT KOST</strong>
+                                <p>[Alamat lengkap belum ditambahkan]</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>KONTAK PENGELOLA</strong>
+                                <p>[Nomor kontak belum ditambahkan]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main class="public-auth-view" id="login-view" data-public-view="login" hidden>
+        <section class="public-auth-layout">
+            <div class="public-auth-story">
+                <span class="public-auth-eyebrow" id="auth-story-label">PORTAL PENGHUNI</span>
+                <h1 id="auth-story-title">Urus kebutuhan kost,<br>lebih mudah.</h1>
+                <p id="auth-story-copy">Akses informasi hunian, pantau pembayaran sewa, dan sampaikan kendala dari satu tempat.</p>
+                <div class="public-story-card"><span aria-hidden="true">✦</span><div><strong id="auth-story-feature">Hunian dalam genggaman</strong><p id="auth-story-feature-copy">Masuk dengan akun terdaftar untuk melanjutkan ke portal Alfian Kost.</p></div></div>
+                <a class="public-story-back" href="#home">← Kembali ke promosi kost</a>
+            </div>
+            <section class="public-auth-card" aria-labelledby="login-heading">
+                <nav class="public-auth-tabs" aria-label="Pilih jenis login">
+                    <a href="#login-user" id="login-user-tab">Masuk penghuni</a>
+                    <a href="#login-admin" id="login-admin-tab">Masuk admin</a>
+                </nav>
+                <div class="public-auth-heading"><span class="public-auth-eyebrow">SELAMAT DATANG KEMBALI</span><h2 id="login-heading">Masuk penghuni</h2><p id="login-copy">Gunakan email dan kata sandi akun penghuni Anda.</p></div>
+                <div class="public-alert" id="auth-form-error" role="alert" hidden></div>
+                <form class="public-form" method="post" action="auth/login.php" id="public-login-form">
+                    <input type="hidden" name="role" id="login-role" value="penghuni">
+                    <label class="public-field">Alamat email<input type="email" name="email" required autocomplete="username" placeholder="nama@email.com"></label>
+                    <label class="public-field">Kata sandi<span class="public-password-wrap"><input type="password" name="password" required autocomplete="current-password" placeholder="Masukkan kata sandi"><button type="button" class="password-toggle" aria-label="Tampilkan kata sandi" data-password-target="login">Lihat</button></span></label>
+                    <div class="public-form-meta"><label class="remember-option"><input type="checkbox" name="remember"> Ingat saya</label></div>
+                    <button class="public-submit" type="submit"><span id="login-button-label">Masuk sebagai penghuni</span><span aria-hidden="true">→</span></button>
+                </form>
+                <div class="public-auth-switch" id="login-bottom-note">Belum punya akun? <a href="#register">Daftar akun penghuni</a></div>
+                <p class="public-auth-disclaimer">Login diproses melalui sistem akun Alfian Kost.</p>
+            </section>
+        </section>
+    </main>
+
+    <main class="public-auth-view" id="register-view" data-public-view="register" hidden>
+        <section class="register-shell">
+            <div class="register-intro"><div><span class="public-auth-eyebrow">MULAI TINGGAL DI ALFIAN KOST</span><h1>Buat akun penghuni</h1><p>Lengkapi informasi Anda dan pilih kamar yang ingin diajukan. Akun akan aktif setelah ditinjau pengelola.</p></div><a class="public-story-back" href="#home">← Kembali ke promosi kost</a></div>
+            <div class="public-alert register-alert" id="register-form-error" role="alert" hidden></div>
+            <div class="register-layout">
+                <form class="public-register-form" method="post" action="auth/register.php" id="public-register-form">
+                    <section class="public-form-section"><div class="public-section-title"><span>01</span><div><h2>Data diri</h2><p>Informasi dasar untuk akun Anda.</p></div></div><div class="public-form-grid">
+                        <label class="public-field full-field">Nama lengkap <i>*</i><input name="nama" type="text" required autocomplete="name" minlength="2" placeholder="Nama sesuai identitas"></label>
+                        <label class="public-field">Nomor telepon / WhatsApp <i>*</i><input name="telepon" type="tel" required autocomplete="tel" placeholder="08xxxxxxxxxx"></label>
+                        <label class="public-field">Alamat email <i>*</i><input name="email" type="email" required autocomplete="email" placeholder="nama@email.com"></label>
+                        <label class="public-field full-field">Alamat asal<textarea name="alamat" rows="2" autocomplete="street-address" placeholder="Kota atau alamat asal (opsional)"></textarea></label>
+                    </div></section>
+                    <section class="public-form-section"><div class="public-section-title"><span>02</span><div><h2>Keamanan akun</h2><p>Buat kata sandi minimal 6 karakter.</p></div></div><div class="public-form-grid">
+                        <label class="public-field">Kata sandi <i>*</i><span class="public-password-wrap"><input name="password" type="password" required minlength="6" autocomplete="new-password" placeholder="Minimal 6 karakter"><button type="button" class="password-toggle" aria-label="Tampilkan kata sandi" data-password-target="register">Lihat</button></span></label>
+                        <label class="public-field">Ulangi kata sandi <i>*</i><input name="confirm_password" type="password" required minlength="6" autocomplete="new-password" placeholder="Ulangi kata sandi"></label>
+                    </div></section>
+                    <section class="public-form-section"><div class="public-section-title"><span>03</span><div><h2>Pilihan kamar</h2><p>Pilih kamar yang akan diajukan.</p></div></div><div class="public-form-grid">
+                        <label class="public-field">Kamar tersedia <i>*</i><select name="kamar_id" id="register-room" required><option value="">Memuat kamar tersedia...</option></select></label>
+                        <label class="public-field">Tanggal mulai menempati <i>*</i><input name="tgl_masuk" type="date" required></label>
+                        <label class="public-field full-field">Catatan / kontak darurat<textarea name="catatan" rows="2" placeholder="Nama kontak darurat dan nomor telepon (opsional)"></textarea></label>
+                    </div></section>
+                    <div class="register-submit-row"><p><i>*</i> Wajib diisi. Akun akan menunggu persetujuan admin.</p><button class="public-submit" type="submit"><span>Kirim pendaftaran</span><span aria-hidden="true">→</span></button></div>
+                    <div class="public-auth-switch">Sudah punya akun? <a href="#login-user">Masuk penghuni</a></div>
+                </form>
+                <aside class="register-aside"><div class="register-room-preview"><span class="public-auth-eyebrow">PILIHAN ANDA</span><span class="preview-room-icon">⌂</span><h2 id="register-preview-title">Pilih kamar</h2><p id="register-preview-type">Ketersediaan kamar akan dimuat.</p><strong id="register-preview-price">—</strong><div id="register-preview-facilities" class="preview-facilities">Pilih kamar untuk melihat fasilitas</div></div><div class="register-steps"><h2>Alur pendaftaran</h2><div><b>1</b><p><strong>Kirim pendaftaran</strong><br>Isi data dan pilih kamar.</p></div><div><b>2</b><p><strong>Menunggu persetujuan</strong><br>Admin meninjau permohonan.</p></div><div><b>3</b><p><strong>Akun aktif</strong><br>Login setelah disetujui.</p></div></div></aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="promo-footer">
+        <div class="promo-container footer-container">
+            <a href="#home" class="promo-brand" aria-label="Alfian Kost, beranda">
+                <span class="brand-icon">⌂</span>
+                <span>Alfian Kost</span>
+            </a>
+            <span class="footer-tagline">Ruang pribadi untuk keseharianmu</span>
+            <span class="footer-copy">Informasi kamar · November 2026</span>
+        </div>
+    </footer>
+
+    <script src="js/public-portal.js" defer></script>
+</body>
+</html>

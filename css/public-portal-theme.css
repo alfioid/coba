@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* Shared tokens and surfaces, matching user/portal.html and admin/portal.html. */
+body,
+body * {
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+body {
+    color: #24233a;
+    background: #f7f7fb;
+}
+
+body,
+body * {
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+h1,
+h2,
+h3,
+.hero-title,
+.section-header h2,
+.stats-intro h3,
+.public-auth-heading h2,
+.register-intro h1,
+.public-section-title h2,
+.register-room-preview h2,
+.register-steps h2 {
+    font-family: 'Manrope', 'DM Sans', 'Segoe UI', sans-serif;
+    letter-spacing: -.4px;
+}
+
+.hero-section {
+    padding: 38px 0 30px;
+}
+
+.hero-grid {
+    padding: 36px;
+    border-radius: 16px;
+    color: #fff;
+    background: linear-gradient(112deg, #393578, #5955a6 72%, #716cc0);
+}
+
+.hero-section .eyebrow {
+    color: #c8c6f3;
+}
+
+.hero-title,
+.section-header h2,
+.contact-copy h2 {
+    font-family: 'Manrope', 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+.hero-title,
+.hero-description {
+    color: #fff;
+}
+
+.highlight-text {
+    color: #d7d4ff;
+}
+
+.hero-description,
+.hero-note {
+    color: #e0dff4;
+}
+
+.hero-section .btn-primary {
+    color: #403d88;
+    background: #fff;
+}
+
+.hero-section .btn-primary:hover {
+    background: #f4f3ff;
+}
+
+.hero-section .public-hero-register {
+    border-color: #ffffff80;
+    color: #fff;
+    background: transparent;
+}
+
+.stats-card,
+.facility-card,
+.room-card {
+    border: 1px solid #efeff4;
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(37, 35, 82, .045);
+}
+
+.facility-card.accent-card {
+    border: 1px solid #efeff4;
+    background: #fbfbff;
+}
+
+.rooms-section {
+    background: #f1f0f8;
+}
+
+.contact-card {
+    border-radius: 15px;
+    background: linear-gradient(112deg, #393578, #5955a6 72%, #716cc0);
+}
+
+.promo-navbar {
+    border-bottom-color: #ececf3;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 3px 14px rgba(37, 35, 82, .025);
+}
+
+.promo-brand,
+.public-nav-admin,
+.public-nav-register,
+.public-story-back,
+.public-auth-tabs a.is-active,
+.public-form-meta > a,
+.public-auth-switch a {
+    color: #403d88;
+}
+
+.public-auth-view {
+    background: #f7f7fb;
+}
+
+.public-auth-card,
+.public-form-section,
+.register-aside > div {
+    border: 1px solid #efeff4;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(37, 35, 82, .055);
+}
+
+.public-auth-card {
+    padding: 24px;
+}
+
+.public-story-card {
+    border-color: #efeff4;
+    border-radius: 11px;
+    box-shadow: 0 8px 24px rgba(37, 35, 82, .045);
+}
+
+.public-auth-tabs {
+    background: #f5f4f9;
+}
+
+.public-auth-tabs a.is-active {
+    background: #fff;
+}
+
+.public-field input,
+.public-field select,
+.public-field textarea {
+    border-color: #e6e5ed;
+    border-radius: 7px;
+}
+
+.public-submit,
+.public-nav-register {
+    background: #403d88;
+    color: #fff;
+}
+
+.public-submit:hover,
+.public-nav-register:hover {
+    background: #302d70;
+}
+
+.public-form-section {
+    padding: 20px;
+}
+
+.public-alert {
+    margin: -7px 0 15px;
+    padding: 10px 12px;
+    border: 1px solid #f1d0d0;
+    border-radius: 8px;
+    color: #a33b43;
+    background: #fff3f3;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.public-alert[hidden] {
+    display: none;
+}
+
+.register-alert {
+    margin: 0 0 14px;
+}
+
+.register-room-preview {
+    background: linear-gradient(145deg, #403d88, #625eaa) !important;
+}
+
+.promo-footer {
+    border-top-color: #ececf3;
+}
+
+@media (max-width: 760px) {
+    .hero-grid {
+        padding: 25px;
+    }
+
+    .public-auth-card {
+        padding: 20px;
+    }
+
+    .public-form-section {
+        padding: 16px;
+    }
+}

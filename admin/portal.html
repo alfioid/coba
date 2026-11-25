@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Admin | Alfian Kost</title>
+    <link rel="stylesheet" href="../css/admin-portal.css">
+    <script src="../js/admin-portal-db.js" defer></script>
+</head>
+<body>
+    <div class="admin-shell">
+        <aside class="admin-sidebar" aria-label="Navigasi admin">
+            <a class="admin-brand" href="#dashboard"><span class="admin-brand-mark">A</span><span><strong>Alfian Kost</strong><small>Panel pengelola</small></span></a>
+            <p class="admin-nav-caption">MENU UTAMA</p>
+            <nav class="admin-nav">
+                <a class="admin-nav-link is-active" href="#dashboard" data-admin-link="dashboard"><span>⌂</span>Dashboard</a>
+                <a class="admin-nav-link" href="#penghuni" data-admin-link="penghuni"><span>♙</span>Data penghuni</a>
+                <a class="admin-nav-link" href="#verifikasi" data-admin-link="verifikasi"><span>✓</span>Verifikasi akun <b class="nav-count" id="pending-nav-count">2</b></a>
+                <a class="admin-nav-link" href="#kamar" data-admin-link="kamar"><span>▦</span>Manajemen kamar</a>
+                <a class="admin-nav-link" href="#tambah-kamar" data-admin-link="tambah-kamar"><span>＋</span>Tambah kamar</a>
+                <a class="admin-nav-link" href="#fasilitas" data-admin-link="fasilitas"><span>✦</span>Fasilitas kamar</a>
+                <a class="admin-nav-link" href="#laporan" data-admin-link="laporan"><span>⚑</span>Pelaporan masalah <b class="nav-count nav-count-muted" id="reports-nav-count">2</b></a>
+                <a class="admin-nav-link" href="#pembayaran" data-admin-link="pembayaran"><span>▣</span>Verifikasi pembayaran <b class="nav-count nav-count-muted" id="payments-nav-count">0</b></a>
+                <a class="admin-nav-link" href="#keuangan" data-admin-link="keuangan"><span>Rp</span>Keuangan</a>
+                <a class="admin-nav-link" href="#password" data-admin-link="password"><span>⌑</span>Reset sandi penghuni</a>
+            </nav>
+            <div class="admin-sidebar-help"><span>✦</span><strong>Ruang kelola</strong><p>Kelola operasional kost Anda dengan lebih tertata.</p></div>
+            <a class="admin-logout" href="../auth/logout.php"><span>↪</span>Keluar</a>
+            <small class="admin-sidebar-copy">© 2026 Alfian Kost</small>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div class="admin-mobile-brand"><span class="admin-brand-mark">A</span><strong>Alfian Kost</strong></div>
+                <div class="admin-breadcrumb"><span>Panel pengelola</span><span>/</span><strong id="admin-page-title">Dashboard</strong></div>
+                <div class="admin-top-user"><time id="admin-today"></time><a class="admin-avatar" href="../auth/logout.php" aria-label="Keluar dari akun admin" title="Keluar">AF</a></div>
+            </header>
+
+            <div class="admin-content">
+                <section class="admin-view" data-admin-view="dashboard">
+                    <div class="admin-hero"><div><span class="admin-eyebrow">PANEL PENGELOLA</span><h1>Selamat datang, Admin <span>✦</span></h1><p>Pantau aktivitas kost dan kelola kebutuhan penghuni dalam satu tempat.</p><a class="admin-btn admin-btn-light" href="#verifikasi">Tinjau pendaftaran <span>→</span></a></div><div class="hero-house" aria-hidden="true"><span>⌂</span><i></i><b></b></div></div>
+                    <div class="admin-section-heading"><div><span class="admin-eyebrow">RINGKASAN</span><h2>Ikhtisar operasional</h2></div><span id="admin-period" class="admin-muted"></span></div>
+                    <div class="admin-stat-grid">
+                        <article class="admin-stat"><span class="admin-stat-icon purple">♙</span><div><small>Penghuni aktif</small><strong id="stat-residents">0</strong><span>Data penghuni terdaftar</span></div></article>
+                        <article class="admin-stat"><span class="admin-stat-icon green">▦</span><div><small>Kamar terisi</small><strong><span id="stat-occupied">0</span><em> / <span id="stat-rooms">0</span></em></strong><span><span id="stat-vacant">0</span> kamar tersedia</span></div></article>
+                        <article class="admin-stat"><span class="admin-stat-icon amber">✓</span><div><small>Menunggu verifikasi</small><strong id="stat-pending">0</strong><span>Perlu ditinjau</span></div></article>
+                        <article class="admin-stat"><span class="admin-stat-icon blue">Rp</span><div><small>Pemasukan bulan ini</small><strong id="stat-income">Rp 0</strong><span>Transaksi tercatat</span></div></article>
+                    </div>
+                    <div class="admin-grid-two dashboard-panels">
+                        <section class="admin-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">TINDAKAN</span><h2>Pendaftaran penghuni</h2></div><a class="admin-text-link" href="#verifikasi">Lihat semua →</a></div><div id="dashboard-pending" class="admin-mini-list"></div></section>
+                        <section class="admin-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">PEMANTAUAN</span><h2>Laporan masalah</h2></div><a class="admin-text-link" href="#laporan">Buka laporan →</a></div><div id="dashboard-reports" class="admin-mini-list"></div></section>
+                    </div>
+                    <div class="admin-notice"><span>i</span><p><strong>Data tersambung ke database.</strong> Perubahan kamar, verifikasi, laporan, pembayaran, reset sandi, dan transaksi tersimpan pada database aplikasi.</p></div>
+                </section>
+
+                <section class="admin-view" data-admin-view="penghuni" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">PENGELOLAAN PENGHUNI</span><h1>Data penghuni</h1><p>Daftar penghuni aktif dan informasi hunian mereka.</p></div><a class="admin-btn admin-btn-primary" href="#verifikasi">+ Verifikasi pendaftaran</a></div>
+                    <div class="admin-toolbar"><label class="admin-search"><span>⌕</span><input id="resident-search" type="search" placeholder="Cari nama, email, atau kamar..."></label><select id="resident-status-filter" aria-label="Filter status"><option value="all">Semua status</option><option value="Aktif">Aktif</option><option value="Menunggu">Menunggu</option></select><span class="admin-muted" id="resident-result-count"></span></div>
+                    <section class="admin-panel admin-table-panel"><div class="admin-table-wrap"><table><thead><tr><th>PENGHUNI</th><th>KAMAR</th><th>KONTAK</th><th>MASA SEWA</th><th>STATUS</th><th>AKSI</th></tr></thead><tbody id="resident-table"></tbody></table></div></section>
+                    <p class="admin-prototype-note">Gunakan tombol “Detail” untuk melihat informasi penghuni.</p>
+                </section>
+
+                <section class="admin-view" data-admin-view="detail-penghuni" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">DATA PENGHUNI / DETAIL</span><h1>Informasi penghuni</h1><p>Ringkasan data diri, kontak, dan masa sewa.</p></div><a class="admin-back-link" href="#penghuni">← Kembali ke data penghuni</a></div>
+                    <div class="admin-grid-two detail-layout"><section class="admin-panel resident-profile-card"><div class="resident-cover"></div><div class="resident-profile-avatar" id="detail-avatar">BS</div><h2 id="detail-name">Budi Santoso</h2><p id="detail-email">budi@example.test</p><span class="admin-status admin-status-green" id="detail-status">Aktif</span><div class="admin-profile-separator"></div><a id="detail-reset-link" class="admin-btn admin-btn-outline admin-btn-block" href="#password">Atur ulang kata sandi</a></section><section class="admin-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">INFORMASI AKUN</span><h2>Data pribadi</h2></div><span class="admin-detail-icon">♙</span></div><div id="resident-detail-list" class="admin-detail-list"></div></section></div>
+                    <div class="admin-notice"><span>i</span><p>Data pada halaman ini merupakan data contoh, bukan data penghuni dari database.</p></div>
+                </section>
+
+                <section class="admin-view" data-admin-view="password" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">KEAMANAN AKUN</span><h1>Reset kata sandi penghuni</h1><p>Buat sandi sementara untuk membantu penghuni yang tidak dapat masuk.</p></div></div>
+                    <div class="admin-grid-form"><section class="admin-panel admin-form-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">AKUN PENGHUNI</span><h2>Atur sandi baru</h2></div><span class="admin-detail-icon">⌑</span></div><form id="password-reset-form" class="admin-form-grid"><label class="admin-field admin-field-full">Pilih penghuni <span>*</span><select name="residentId" id="password-resident" required></select></label><label class="admin-field">Kata sandi baru <span>*</span><input name="newPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="Minimal 8 karakter"></label><label class="admin-field">Konfirmasi kata sandi <span>*</span><input name="confirmPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="Ulangi kata sandi"></label><div class="admin-form-actions admin-field-full"><span>Gunakan sandi yang kuat dan beritahu penghuni secara aman.</span><button class="admin-btn admin-btn-primary" type="submit">Simpan sandi baru</button></div></form></section><aside class="admin-panel admin-info-panel"><span class="admin-info-icon">!</span><h2>Perhatian keamanan</h2><p>Jangan meminta atau mengirimkan kata sandi melalui pesan yang tidak aman. Minta penghuni segera mengganti sandi sementara setelah berhasil masuk.</p><div class="admin-info-rule"></div><small>Kata sandi disimpan sebagai hash di database dan tidak dapat dilihat kembali.</small></aside></div>
+                </section>
+
+                <section class="admin-view" data-admin-view="kamar" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">PENGELOLAAN PROPERTI</span><h1>Manajemen kamar</h1><p>Pantau status kamar, harga sewa, penghuni, dan fasilitas.</p></div><a class="admin-btn admin-btn-primary" href="#tambah-kamar">＋ Tambah kamar</a></div>
+                    <div class="admin-room-summary"><article><span>Jumlah kamar</span><strong id="room-count-total">0</strong></article><article><span>Terisi</span><strong id="room-count-occupied">0</strong></article><article><span>Tersedia</span><strong id="room-count-vacant">0</strong></article><article><span>Perbaikan</span><strong id="room-count-repair">0</strong></article></div>
+                    <div class="admin-toolbar"><label class="admin-search"><span>⌕</span><input id="room-search" type="search" placeholder="Cari nomor atau tipe kamar..."></label><select id="room-status-filter" aria-label="Filter status kamar"><option value="all">Semua status</option><option>Terisi</option><option>Tersedia</option><option>Perbaikan</option></select><a class="admin-btn admin-btn-outline" href="#fasilitas">Kelola fasilitas</a></div>
+                    <section id="room-grid" class="admin-room-grid"></section>
+                </section>
+
+                <section class="admin-view" data-admin-view="tambah-kamar" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">PROPERTI / KAMAR</span><h1>Tambah / edit kamar</h1><p>Masukkan detail kamar baru atau perbarui kamar yang sudah terdaftar.</p></div><a class="admin-back-link" href="#kamar">← Kembali ke kamar</a></div>
+                    <div class="admin-grid-form"><section class="admin-panel admin-form-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">DETAIL KAMAR</span><h2 id="room-form-title">Informasi kamar</h2></div><span class="admin-detail-icon">▦</span></div><form id="room-form" class="admin-form-grid"><label class="admin-field">Nomor kamar <span>*</span><input name="number" required maxlength="12" placeholder="Contoh: 105"></label><label class="admin-field">Tipe kamar <span>*</span><input name="type" required maxlength="80" placeholder="Contoh: Standar AC"></label><label class="admin-field">Harga sewa per bulan (Rp) <span>*</span><input name="price" type="number" min="0" step="50000" required placeholder="1500000"></label><label class="admin-field">Status kamar<select name="status"><option value="Tersedia">Tersedia</option><option value="Terisi">Terisi</option><option value="Perbaikan">Perbaikan</option></select></label><label class="admin-field admin-field-full">Fasilitas kamar<div id="room-facility-checks" class="admin-check-grid"></div></label><div class="admin-form-actions admin-field-full"><span>Kolom bertanda * wajib diisi.</span><div class="room-form-buttons"><button class="admin-btn admin-btn-outline" id="room-form-cancel" type="button" hidden>Batal</button><button class="admin-btn admin-btn-primary" id="room-form-submit" type="submit">Simpan kamar</button></div></div></form></section><aside class="admin-panel admin-info-panel"><span class="admin-info-icon">✦</span><h2>Tips pengisian</h2><p>Pastikan nomor kamar unik. Kamar yang sudah memiliki penghuni atau riwayat tidak dapat dihapus.</p></aside></div>
+                </section>
+
+                <section class="admin-view" data-admin-view="fasilitas" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">PROPERTI / KELENGKAPAN</span><h1>Fasilitas kamar</h1><p>Atur fasilitas yang tersedia dan pilih kamar yang menggunakannya.</p></div></div>
+                    <div class="admin-grid-form facility-layout"><section class="admin-panel admin-form-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">PEMETAAN FASILITAS</span><h2>Perbarui fasilitas kamar</h2></div><span class="admin-detail-icon">✦</span></div><form id="facility-form" class="admin-form-grid"><label class="admin-field admin-field-full">Pilih kamar <span>*</span><select id="facility-room-select" name="roomId" required></select></label><fieldset class="admin-field admin-field-full"><legend>Pilih fasilitas tersedia</legend><div id="facility-checkboxes" class="admin-check-grid"></div></fieldset><div class="admin-form-actions admin-field-full"><span>Pilih semua fasilitas yang ada di kamar.</span><button class="admin-btn admin-btn-primary" type="submit">Simpan fasilitas</button></div></form></section><aside class="admin-panel admin-info-panel"><span class="admin-info-icon">i</span><h2>Master fasilitas</h2><p>Daftar contoh fasilitas yang dapat dipetakan ke kamar.</p><div id="facility-master-list" class="facility-master-list"></div><form id="facility-add-form" class="inline-add-form"><label class="admin-field">Tambah fasilitas baru<input name="facility" required maxlength="32" placeholder="Contoh: Water heater"></label><button class="admin-btn admin-btn-outline" type="submit">Tambah</button></form></aside></div>
+                    <section class="admin-panel admin-table-panel facility-table-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">RINGKASAN PROPERTI</span><h2>Fasilitas per kamar</h2></div></div><div class="admin-table-wrap"><table><thead><tr><th>KAMAR</th><th>TIPE</th><th>FASILITAS</th><th>JUMLAH</th></tr></thead><tbody id="facility-room-table"></tbody></table></div></section>
+                </section>
+
+                <section class="admin-view" data-admin-view="verifikasi" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">AKUN BARU</span><h1>Verifikasi akun penghuni</h1><p>Tinjau permohonan pendaftaran dan kecocokan kamar.</p></div><span class="admin-status admin-status-amber"><span id="verification-count">0</span> menunggu</span></div>
+                    <div class="admin-notice"><span>i</span><p>Terima pendaftaran hanya setelah detail dan ketersediaan kamar dipastikan.</p></div>
+                    <section id="verification-list" class="admin-verification-list"></section>
+                </section>
+
+                <section class="admin-view" data-admin-view="laporan" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">LAYANAN PENGHUNI</span><h1>Pelaporan masalah</h1><p>Tinjau kendala fasilitas dan perbarui status penanganan.</p></div><span class="admin-status admin-status-amber"><span id="open-report-count">0</span> perlu ditangani</span></div>
+                    <div class="admin-toolbar"><label class="admin-search"><span>⌕</span><input id="report-search" type="search" placeholder="Cari laporan, penghuni, atau kamar..."></label><select id="report-status-filter" aria-label="Filter laporan"><option value="all">Semua status</option><option>Menunggu</option><option>Sedang Dikerjakan</option><option>Selesai</option></select></div>
+                    <section id="report-list" class="admin-report-grid"></section>
+                </section>
+
+                <section class="admin-view" data-admin-view="pembayaran" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">PEMBAYARAN SEWA</span><h1>Verifikasi pembayaran</h1><p>Tinjau konfirmasi pembayaran penghuni sebelum dicatat sebagai pemasukan.</p></div><span class="admin-status admin-status-amber"><span id="pending-payment-count">0</span> menunggu</span></div>
+                    <div class="admin-notice"><span>i</span><p>Setujui hanya setelah pembayaran benar-benar diterima. Persetujuan akan memperbarui status dan membuat transaksi pemasukan satu kali.</p></div>
+                    <section class="admin-panel admin-table-panel payment-review-panel"><div class="admin-table-wrap"><table><thead><tr><th>PENGHUNI</th><th>TAGIHAN</th><th>TANGGAL</th><th>METODE / CATATAN</th><th>NOMINAL</th><th>STATUS</th><th>AKSI</th></tr></thead><tbody id="admin-payment-table"></tbody></table></div></section>
+                </section>
+
+                <section class="admin-view" data-admin-view="keuangan" hidden>
+                    <div class="admin-page-heading"><div><span class="admin-eyebrow">LAPORAN USAHA</span><h1>Keuangan</h1><p>Catat transaksi dan pantau arus kas operasional kost.</p></div><button class="admin-btn admin-btn-primary" type="button" id="focus-transaction">＋ Catat transaksi</button></div>
+                    <div class="finance-summary-grid"><article><span>Saldo tercatat</span><strong id="finance-balance">Rp 0</strong><small>Akumulasi pemasukan dan pengeluaran</small></article><article><span>Pemasukan bulan ini</span><strong id="finance-income">Rp 0</strong><small class="finance-positive">● Transaksi masuk</small></article><article><span>Pengeluaran bulan ini</span><strong id="finance-expense">Rp 0</strong><small class="finance-negative">● Transaksi keluar</small></article></div>
+                    <section class="admin-panel admin-form-panel transaction-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">PEMBUKUAN</span><h2>Tambah transaksi</h2></div><span class="admin-detail-icon">Rp</span></div><form id="transaction-form" class="admin-form-grid"><label class="admin-field">Jenis transaksi <span>*</span><select name="type" required><option>Masuk</option><option>Keluar</option></select></label><label class="admin-field">Kategori <span>*</span><select name="category" required><option>Sewa kamar</option><option>Perawatan</option><option>Utilitas</option><option>Perlengkapan</option><option>Lainnya</option></select></label><label class="admin-field">Jumlah (Rp) <span>*</span><input name="amount" type="number" min="1" required placeholder="0"></label><label class="admin-field">Tanggal <span>*</span><input name="date" type="date" required></label><label class="admin-field admin-field-full">Keterangan<input name="description" maxlength="120" placeholder="Keterangan transaksi"></label><div class="admin-form-actions admin-field-full"><span>Transaksi akan dicatat pada database kost.</span><button class="admin-btn admin-btn-primary" type="submit">Simpan transaksi</button></div></form></section>
+                    <section class="admin-panel admin-table-panel finance-table-panel"><div class="admin-panel-heading"><div><span class="admin-eyebrow">RIWAYAT</span><h2>Transaksi terbaru</h2></div><span class="admin-muted" id="transaction-count"></span></div><div class="admin-table-wrap"><table><thead><tr><th>TANGGAL</th><th>KETERANGAN</th><th>KATEGORI</th><th>JENIS</th><th>JUMLAH</th></tr></thead><tbody id="transaction-table"></tbody></table></div></section>
+                </section>
+            </div>
+            <footer class="admin-footer"><span>Alfian Kost · Panel pengelola</span><span>Terhubung ke database aplikasi</span></footer>
+        </main>
+    </div>
+    <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# .htaccess
+# Disable PHP error display in production
+php_flag display_errors Off
+php_value error_reporting 30711
